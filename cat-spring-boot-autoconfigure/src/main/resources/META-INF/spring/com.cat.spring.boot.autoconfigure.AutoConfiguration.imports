@@ -1,0 +1,6 @@
+org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration
+org.springframework.boot.autoconfigure.data.redis.RedisReactiveAutoConfiguration
+org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration
+org.springframework.data.redis.connection.RedisConnectionFactory
+org.springframework.data.redis.core.RedisOperations
+org.springframework.data.redis.core.RedisTemplate
