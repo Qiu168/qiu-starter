@@ -3,7 +3,6 @@ package com.cat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @SuppressWarnings("ALL")
 public class RedisService {
     @Autowired
-    public RedisTemplate redisTemplate;
+    public JsonRedisTemplate jsonRedisTemplate;
 
     /**
      * 缓存基本的对象，Integer、String、实体类等
@@ -29,7 +28,7 @@ public class RedisService {
      * @param value 缓存的值
      */
     public <T> void setCacheObject(final String key, final T value) {
-        redisTemplate.opsForValue().set(key, value);
+        jsonRedisTemplate.opsForValue().set(key, value);
     }
 
     /**
@@ -41,7 +40,7 @@ public class RedisService {
      * @param timeUnit 时间颗粒度
      */
     public <T> void setCacheObject(final String key, final T value, final Long timeout, final TimeUnit timeUnit) {
-        redisTemplate.opsForValue().set(key, value, timeout, timeUnit);
+        jsonRedisTemplate.opsForValue().set(key, value, timeout, timeUnit);
     }
 
     /**
@@ -64,7 +63,7 @@ public class RedisService {
      * @return true=设置成功；false=设置失败
      */
     public boolean expire(final String key, final long timeout, final TimeUnit unit) {
-        return redisTemplate.expire(key, timeout, unit);
+        return jsonRedisTemplate.expire(key, timeout, unit);
     }
 
     /**
@@ -74,7 +73,7 @@ public class RedisService {
      * @return 有效时间
      */
     public long getExpire(final String key) {
-        return redisTemplate.getExpire(key);
+        return jsonRedisTemplate.getExpire(key);
     }
 
     /**
@@ -84,7 +83,7 @@ public class RedisService {
      * @return true 存在 false不存在
      */
     public Boolean hasKey(String key) {
-        return redisTemplate.hasKey(key);
+        return jsonRedisTemplate.hasKey(key);
     }
 
     /**
@@ -94,7 +93,7 @@ public class RedisService {
      * @return 缓存键值对应的数据
      */
     public <T> T getCacheObject(final String key) {
-        ValueOperations<String, T> operation = redisTemplate.opsForValue();
+        ValueOperations<String, T> operation = jsonRedisTemplate.opsForValue();
         return operation.get(key);
     }
 
@@ -104,7 +103,7 @@ public class RedisService {
      * @param key
      */
     public boolean deleteObject(final String key) {
-        return redisTemplate.delete(key);
+        return jsonRedisTemplate.delete(key);
     }
 
     /**
@@ -114,7 +113,7 @@ public class RedisService {
      * @return
      */
     public boolean deleteObject(final Collection collection) {
-        return redisTemplate.delete(collection) > 0;
+        return jsonRedisTemplate.delete(collection) > 0;
     }
 
     /**
@@ -125,7 +124,7 @@ public class RedisService {
      * @return 缓存的对象
      */
     public <T> long setCacheList(final String key, final List<T> dataList) {
-        Long count = redisTemplate.opsForList().rightPushAll(key, dataList);
+        Long count = jsonRedisTemplate.opsForList().rightPushAll(key, dataList);
         return count == null ? 0 : count;
     }
 
@@ -136,7 +135,7 @@ public class RedisService {
      * @return 缓存键值对应的数据
      */
     public <T> List<T> getCacheList(final String key) {
-        return redisTemplate.opsForList().range(key, 0, -1);
+        return jsonRedisTemplate.opsForList().range(key, 0, -1);
     }
 
     /**
@@ -147,7 +146,7 @@ public class RedisService {
      * @return 缓存数据的对象
      */
     public <T> BoundSetOperations<String, T> setCacheSet(final String key, final Set<T> dataSet) {
-        BoundSetOperations<String, T> setOperation = redisTemplate.boundSetOps(key);
+        BoundSetOperations<String, T> setOperation = jsonRedisTemplate.boundSetOps(key);
         Iterator<T> it = dataSet.iterator();
         while (it.hasNext()) {
             setOperation.add(it.next());
@@ -162,7 +161,7 @@ public class RedisService {
      * @return
      */
     public <T> Set<T> getCacheSet(final String key) {
-        return redisTemplate.opsForSet().members(key);
+        return jsonRedisTemplate.opsForSet().members(key);
     }
 
     /**
@@ -173,7 +172,7 @@ public class RedisService {
      */
     public <T> void setCacheMap(final String key, final Map<String, T> dataMap) {
         if (dataMap != null) {
-            redisTemplate.opsForHash().putAll(key, dataMap);
+            jsonRedisTemplate.opsForHash().putAll(key, dataMap);
         }
     }
 
@@ -184,7 +183,7 @@ public class RedisService {
      * @return
      */
     public <T> Map<String, T> getCacheMap(final String key) {
-        return redisTemplate.opsForHash().entries(key);
+        return jsonRedisTemplate.opsForHash().entries(key);
     }
 
     /**
@@ -195,7 +194,7 @@ public class RedisService {
      * @param value 值
      */
     public <T> void setCacheMapValue(final String key, final String hKey, final T value) {
-        redisTemplate.opsForHash().put(key, hKey, value);
+        jsonRedisTemplate.opsForHash().put(key, hKey, value);
     }
 
     /**
@@ -206,7 +205,7 @@ public class RedisService {
      * @return Hash中的对象
      */
     public <T> T getCacheMapValue(final String key, final String hKey) {
-        HashOperations<String, String, T> opsForHash = redisTemplate.opsForHash();
+        HashOperations<String, String, T> opsForHash = jsonRedisTemplate.opsForHash();
         return opsForHash.get(key, hKey);
     }
 
@@ -218,7 +217,7 @@ public class RedisService {
      * @return Hash对象集合
      */
     public <T> List<T> getMultiCacheMapValue(final String key, final Collection<Object> hKeys) {
-        return redisTemplate.opsForHash().multiGet(key, hKeys);
+        return jsonRedisTemplate.opsForHash().multiGet(key, hKeys);
     }
 
     /**
@@ -229,7 +228,7 @@ public class RedisService {
      * @return 是否成功
      */
     public boolean deleteCacheMapValue(final String key, final String hKey) {
-        return redisTemplate.opsForHash().delete(key, hKey) > 0;
+        return jsonRedisTemplate.opsForHash().delete(key, hKey) > 0;
     }
 
     /**
@@ -239,6 +238,6 @@ public class RedisService {
      * @return 对象列表
      */
     public Collection<String> keys(final String pattern) {
-        return redisTemplate.keys(pattern);
+        return jsonRedisTemplate.keys(pattern);
     }
 }

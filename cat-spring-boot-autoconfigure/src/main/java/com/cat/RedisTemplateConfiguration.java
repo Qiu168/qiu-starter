@@ -9,11 +9,11 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 
 /**
+ * todo:建议优化为@EnableJsonRedis，或者直接叫JsonRedisTemplate得了
  * @author 14629
  */
 @Slf4j
@@ -26,9 +26,9 @@ public class RedisTemplateConfiguration extends CachingConfigurerSupport {
     @Bean
     @ConditionalOnSingleCandidate(RedisConnectionFactory.class)
     @SuppressWarnings(value = { "unchecked", "rawtypes" })
-    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
-        log.info("bean Override:RedisTemplate");
-        RedisTemplate<Object, Object> template = new RedisTemplate<>();
+    public JsonRedisTemplate jsonRedisTemplate(RedisConnectionFactory connectionFactory) {
+        log.info("bean :JsonTemplate");
+        JsonRedisTemplate<Object,Object> template = new JsonRedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 
         FastJson2JsonRedisSerializer serializer = new FastJson2JsonRedisSerializer(Object.class);

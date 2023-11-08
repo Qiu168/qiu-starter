@@ -1,8 +1,10 @@
 package com.test;
 
+import com.cat.JsonRedisTemplate;
 import com.cat.MyService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,14 +20,17 @@ public class Application {
     static class P{
         String name;
     }
+    @Autowired
+    JsonRedisTemplate<Object,Object> jsonRedisTemplate;
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
         MyService bean = context.getBean(MyService.class);
         //Object redis = context.getBean("redis");
         RedisTemplate redisTemplate = (RedisTemplate)context.getBean("redisTemplate");
+        JsonRedisTemplate jsonRedisTemplate = (JsonRedisTemplate)context.getBean("jsonRedisTemplate");
         P p=new P("zhangsan");
-        redisTemplate.opsForValue().set("zhangsan",p);
-        Object zhangsan = redisTemplate.opsForValue().get("zhangsan");
+        jsonRedisTemplate.opsForValue().set("zhangsan",p);
+        Object zhangsan = jsonRedisTemplate.opsForValue().get("zhangsan");
         System.out.println(zhangsan);
         System.out.println(bean.addPrefix("hello"));
         test bean1 = context.getBean(test.class);
