@@ -22,7 +22,7 @@ public class Application {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
         MyService bean = context.getBean(MyService.class);
         //Object redis = context.getBean("redis");
-        RedisTemplate redisTemplate = (RedisTemplate)context.getBean("redis");
+        RedisTemplate redisTemplate = (RedisTemplate)context.getBean("redisTemplate");
         P p=new P("zhangsan");
         redisTemplate.opsForValue().set("zhangsan",p);
         Object zhangsan = redisTemplate.opsForValue().get("zhangsan");
