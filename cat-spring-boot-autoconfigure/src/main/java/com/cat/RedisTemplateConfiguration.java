@@ -1,12 +1,19 @@
 package com.cat;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -14,12 +21,19 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 /**
  * @author 14629
  */
-@AutoConfiguration(after = RedisAutoConfiguration.class)
-public class RedisTemplateConfiguration {
-    @Bean
-    @ConditionalOnBean(name = "redisTemplateConfiguration")
+@Slf4j
+@EnableCaching
+@Configuration
+@AutoConfigureAfter(RedisAutoConfiguration.class)
+@ConditionalOnSingleCandidate(RedisConnectionFactory.class)
+//@ConditionalOnProperty(prefix = "cat", value = "redis", matchIfMissing = true)
+public class RedisTemplateConfiguration extends CachingConfigurerSupport {
+    @Bean("redis")
+    //@ConditionalOnBean(name = "redisTemplateConfiguration")
     @ConditionalOnSingleCandidate(RedisConnectionFactory.class)
-    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+    @SuppressWarnings(value = { "unchecked", "rawtypes" })
+    public RedisTemplate<Object, Object> redis(RedisConnectionFactory connectionFactory) {
+        log.info("bean Override:RedisTemplate");
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
 
