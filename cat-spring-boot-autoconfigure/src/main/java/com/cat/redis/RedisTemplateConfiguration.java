@@ -13,7 +13,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 
 /**
- * todo:建议优化为@EnableJsonRedis，或者直接叫JsonRedisTemplate得了
+ * todo:可以优化为@EnableJsonRedis，或者直接叫JsonRedisTemplate得了
  * @author 14629
  */
 @Slf4j
