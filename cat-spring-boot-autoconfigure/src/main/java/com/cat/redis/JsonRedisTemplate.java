@@ -1,4 +1,4 @@
-package com.cat;
+package com.cat.redis;
 
 import org.springframework.data.redis.core.RedisTemplate;
 

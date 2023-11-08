@@ -1,2 +1,2 @@
-com.cat.RedisTemplateConfiguration
-com.cat.RedisService
+com.cat.redis.RedisTemplateConfiguration
+com.cat.redis.RedisService

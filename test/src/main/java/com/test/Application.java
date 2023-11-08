@@ -1,6 +1,6 @@
 package com.test;
 
-import com.cat.JsonRedisTemplate;
+import com.cat.redis.JsonRedisTemplate;
 import com.cat.MyService;
 import lombok.AllArgsConstructor;
 import lombok.Data;

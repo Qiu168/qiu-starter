@@ -1,4 +1,4 @@
-package com.cat;
+package com.cat.redis;
 
 
 import com.alibaba.fastjson2.JSON;
