@@ -1,2 +1,3 @@
 com.cat.redis.RedisTemplateConfiguration
 com.cat.redis.RedisService
+#com.cat.log.LogAspect
