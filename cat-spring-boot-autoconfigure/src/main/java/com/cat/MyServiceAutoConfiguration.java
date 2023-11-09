@@ -6,6 +6,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * @author 14629
+ */
 // 必须，指明这是一个配置类
 @Configuration
 // 可选，表示在web应用中才配置

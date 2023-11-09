@@ -4,7 +4,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Component;
 //@Order()
 //@ConditionalOnMissingBean(name="logAspect")
 @ConditionalOnMissingBean(ILogAspect.class)
-public class LogAspectImpl implements ILogAspect{
+public class LogAspect implements ILogAspect{
     @Around(value = "pointCut()")
     @Override
     public Object doAroundAdvice(ProceedingJoinPoint proceedingJoinPoint) {
