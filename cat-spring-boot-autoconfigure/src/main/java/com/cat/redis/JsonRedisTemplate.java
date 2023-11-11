@@ -4,7 +4,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 
 
 /**
- * @author 14629
+ * @author _qiu
  */
 public class JsonRedisTemplate<K,V> extends RedisTemplate<K,V> {
 }

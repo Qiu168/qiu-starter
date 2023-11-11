@@ -21,7 +21,6 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 @AutoConfigureAfter(RedisAutoConfiguration.class)
 @ConditionalOnSingleCandidate(RedisConnectionFactory.class)
-//@ConditionalOnProperty(prefix = "cat", value = "redis", matchIfMissing = true)
 public class RedisTemplateConfiguration extends CachingConfigurerSupport {
     @Bean
     @ConditionalOnSingleCandidate(RedisConnectionFactory.class)
