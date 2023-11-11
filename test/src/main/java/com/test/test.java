@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,17 +16,19 @@ import org.springframework.stereotype.Component;
 public class test {
     @Autowired
     private RedisService redisService;
-    @AllArgsConstructor
-    @Data
-    static class P{
-        String name;
-    }
-    @Log
-    public void test1(){
-        P p=new P("zhangsan");
-        redisService.setCacheObject("zhangsan",p);
-        Object zhangsan = redisService.getCacheObject("zhangsan");
-        System.out.println(zhangsan);
+//    @AllArgsConstructor
+//    @Data
+//    static class P{
+//        String name;
+//    }
+    @Log(title = "test")
+    public String test1(P p){
+//        P p=new P("zhangsan");
+//        redisService.setCacheObject("zhangsan",p);
+//        Object zhangsan = redisService.getCacheObject("zhangsan");
+        //System.out.println("zhangsan");
+        //throw new RuntimeException("456");
+        return "zhangsan ";
         //System.out.println(myService.addSuffix("789"));
     }
 }

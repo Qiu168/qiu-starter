@@ -19,26 +19,13 @@ import org.springframework.data.redis.core.RedisTemplate;
 @EnableAspectJAutoProxy
 @EnableLog
 public class Application {
-    @AllArgsConstructor
-    @Data
-    static class P{
-        String name;
-    }
+
     @Autowired
     JsonRedisTemplate<Object,Object> jsonRedisTemplate;
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-        MyService bean = context.getBean(MyService.class);
-        //Object redis = context.getBean("redis");
-        RedisTemplate redisTemplate = (RedisTemplate)context.getBean("redisTemplate");
-        JsonRedisTemplate jsonRedisTemplate = (JsonRedisTemplate)context.getBean("jsonRedisTemplate");
         test bean1 = context.getBean(test.class);
-        bean1.test1();
-        P p=new P("zhangsan");
-        jsonRedisTemplate.opsForValue().set("zhangsan",p);
-        Object zhangsan = jsonRedisTemplate.opsForValue().get("zhangsan");
-        System.out.println(zhangsan);
-        System.out.println(bean.addPrefix("hello"));
-
+        P p=new P("123","456");
+        String s = bean1.test1(p);
     }
 }
