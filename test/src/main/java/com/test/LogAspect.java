@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 /**
  * @author 14629
  */
-@Component
+//@Component
 @Slf4j
 @Aspect
 public class LogAspect implements ILogAspect {

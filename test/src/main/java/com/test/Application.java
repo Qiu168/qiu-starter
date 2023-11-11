@@ -1,5 +1,6 @@
 package com.test;
 
+import com.alibaba.fastjson2.JSON;
 import com.cat.log.EnableLog;
 import com.cat.redis.JsonRedisTemplate;
 import com.cat.MyService;
@@ -26,6 +27,7 @@ public class Application {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
         test bean1 = context.getBean(test.class);
         P p=new P("123","456");
+        System.out.println(JSON.toJSONString(p));
         String s = bean1.test1(p);
     }
 }
