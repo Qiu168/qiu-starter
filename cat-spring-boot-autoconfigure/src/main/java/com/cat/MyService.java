@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author 14629
  */
 @Slf4j
+@Deprecated
 public class MyService {
 
     private MyProperties myProperties;

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author 14629
  */
+@Deprecated
 // 必须，指明这是一个配置类
 @Configuration
 // 可选，表示在web应用中才配置

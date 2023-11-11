@@ -5,6 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author 14629
  */
+@Deprecated
 @ConfigurationProperties(prefix = "cat")
 public class MyProperties {
     private String prefix;
