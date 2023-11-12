@@ -2,3 +2,4 @@ com.cat.redis.RedisTemplateConfiguration
 com.cat.redis.RedisService
 #com.cat.log.LogAspect
 com.cat.utils.SpringUtil
+com.cat.json.sensitive.DefaultSensitiveService
