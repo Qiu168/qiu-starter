@@ -1,7 +1,6 @@
 package com.cat.json;
 
 import com.alibaba.fastjson2.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JacksonAnnotation;
 import com.fasterxml.jackson.annotation.JacksonAnnotationsInside;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.lang.annotation.ElementType;

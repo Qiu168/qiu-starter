@@ -8,9 +8,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonSerializer;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.ContextualSerializer;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
-
 import java.io.IOException;
 import java.util.Objects;
 
@@ -19,9 +17,9 @@ import java.util.Objects;
  *
  * @author qiu
  */
-@Slf4j
 public class SensitiveJsonSerializer extends JsonSerializer<String> implements ContextualSerializer {
-
+    @SuppressWarnings("all")
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(SensitiveJsonSerializer.class);
     private Desensitize strategy;
 
     @Override
@@ -45,7 +43,7 @@ public class SensitiveJsonSerializer extends JsonSerializer<String> implements C
         if (Objects.nonNull(annotation) && Objects.equals(String.class, property.getType().getRawClass())) {
             String strategyStr = annotation.strategy();
             Class<? extends Desensitize> Class = annotation.strategyClass();
-            if(!Class.isEnum()){
+            if (!Class.isEnum()) {
                 return prov.findValueSerializer(property.getType(), property);
             }
             Class<? extends Enum> strategyClass = (Class<? extends Enum>) Class;

@@ -4,25 +4,30 @@ import com.cat.log.Log;
 import com.cat.redis.RedisService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
  * @author 14629
  */
-@Slf4j
 @Component
 public class test {
+    //<editor-fold defaultstate="collapsed" desc="delombok">
+    @SuppressWarnings("all")
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(test.class);
+    //</editor-fold>
     @Autowired
     private RedisService redisService;
+
+//<editor-fold defaultstate="collapsed" desc="delombok">
+//</editor-fold>
 //    @AllArgsConstructor
 //    @Data
 //    static class P{
 //        String name;
 //    }
     @Log(title = "test")
-    public String test1(P p){
+    public String test1(P p) {
 //        P p=new P("zhangsan");
 //        redisService.setCacheObject("zhangsan",p);
 //        Object zhangsan = redisService.getCacheObject("zhangsan");

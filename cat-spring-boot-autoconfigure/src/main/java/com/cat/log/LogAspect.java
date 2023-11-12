@@ -4,7 +4,6 @@ import com.alibaba.fastjson2.JSON;
 import com.cat.log.filter.PropertyPreExcludeFilter;
 import com.cat.utils.SpringUtil;
 import com.cat.utils.StringUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -13,7 +12,6 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Collection;
@@ -24,16 +22,19 @@ import java.util.Map;
  */
 @Aspect
 @Component
-@Slf4j
 @ConditionalOnMissingBean(ILogAspect.class)
 public class LogAspect implements ILogAspect {
+    //<editor-fold defaultstate="collapsed" desc="delombok">
+    @SuppressWarnings("all")
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(LogAspect.class);
+
+    //private static final String[] EXCLUDE_PROPERTIES = {"password", "oldPassword", "newPassword", "confirmPassword"};
+    //</editor-fold>
     /**
      * @see ILogAspect
      * 默认排除敏感属性字段
      */
-    //private static final String[] EXCLUDE_PROPERTIES = {"password", "oldPassword", "newPassword", "confirmPassword"};
-
-    @Around(value = "@annotation(anLog)")
+    @Around("@annotation(anLog)")
     @Override
     public Object logAdvice(ProceedingJoinPoint proceedingJoinPoint, Log anLog) {
         if (!anLog.title().isEmpty()) {
@@ -44,7 +45,7 @@ public class LogAspect implements ILogAspect {
         log.info("环绕通知的目标方法名：" + className + "." + methodName + "()");
         if (anLog.isSaveRequestData()) {
             String params = argsArrayToString(proceedingJoinPoint.getArgs(), anLog.excludeParamNames());
-            log.info("请求参数为:{}",params);
+            log.info("请求参数为:{}", params);
         }
         long start = System.currentTimeMillis();
         try {
@@ -56,7 +57,7 @@ public class LogAspect implements ILogAspect {
         } catch (Throwable throwable) {
             log.error("发生异常: {}", throwable.getMessage());
             throw new RuntimeException(throwable); // 抛出异常或者返回一个合适的值
-        }finally {
+        } finally {
             long end = System.currentTimeMillis();
             log.info("耗时：{} 毫秒", end - start);
         }
@@ -69,7 +70,7 @@ public class LogAspect implements ILogAspect {
         String params = "";
         if (paramsArray != null && paramsArray.length > 0) {
             for (Object o : paramsArray) {
-                if(SpringUtil.deduceWebEnvironment()){
+                if (SpringUtil.deduceWebEnvironment()) {
                     if (StringUtil.isNotNull(o) && !isFilterObject(o)) {
                         try {
                             String jsonObj = JSON.toJSONString(o, excludePropertyPreFilter(excludeParamNames));
@@ -77,7 +78,7 @@ public class LogAspect implements ILogAspect {
                         } catch (Exception e) {
                         }
                     }
-                }else {
+                } else {
                     if (StringUtil.isNotNull(o)) {
                         try {
                             String jsonObj = JSON.toJSONString(o, excludePropertyPreFilter(excludeParamNames));
@@ -86,7 +87,6 @@ public class LogAspect implements ILogAspect {
                         }
                     }
                 }
-
             }
         }
         return params.trim();
@@ -122,7 +122,6 @@ public class LogAspect implements ILogAspect {
                 return entry.getValue() instanceof MultipartFile;
             }
         }
-        return o instanceof MultipartFile || o instanceof HttpServletRequest || o instanceof HttpServletResponse
-                || o instanceof BindingResult;
+        return o instanceof MultipartFile || o instanceof HttpServletRequest || o instanceof HttpServletResponse || o instanceof BindingResult;
     }
 }
