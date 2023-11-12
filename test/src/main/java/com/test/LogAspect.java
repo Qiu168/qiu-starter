@@ -5,10 +5,11 @@ import com.cat.log.Log;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
-//@Component
+
 /**
  * @author 14629
  */
+@Component
 @Aspect
 public class LogAspect implements ILogAspect {
     //<editor-fold defaultstate="collapsed" desc="delombok">

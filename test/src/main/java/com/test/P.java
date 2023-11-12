@@ -2,7 +2,8 @@ package com.test;
 
 import com.cat.json.JSONIgnore;
 import com.cat.json.sensitive.Sensitive;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 
 public class P {
     String name;

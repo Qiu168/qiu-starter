@@ -2,8 +2,6 @@ package com.test;
 
 import com.cat.log.Log;
 import com.cat.redis.RedisService;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
