@@ -28,7 +28,7 @@ public class RedisTemplateConfiguration extends CachingConfigurerSupport {
     @ConditionalOnSingleCandidate(RedisConnectionFactory.class)
     @SuppressWarnings({"unchecked", "rawtypes"})
     public JsonRedisTemplate jsonRedisTemplate(RedisConnectionFactory connectionFactory) {
-        log.info("bean :JsonTemplate");
+        log.info("bean :JsonRedisTemplate");
         JsonRedisTemplate<Object, Object> template = new JsonRedisTemplate<>();
         template.setConnectionFactory(connectionFactory);
         FastJson2JsonRedisSerializer serializer = new FastJson2JsonRedisSerializer(Object.class);
