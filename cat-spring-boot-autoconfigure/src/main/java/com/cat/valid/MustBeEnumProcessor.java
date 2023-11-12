@@ -1,6 +1,6 @@
 package com.cat.valid;
 
-import com.google.auto.service.AutoService;
+//import com.google.auto.service.AutoService;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
@@ -12,9 +12,10 @@ import javax.tools.Diagnostic;
 import java.util.Set;
 
 /**
+ * todo:求大佬带带不会写啊，为什么就是不成功呢？
  * @author 14629
  */
-@AutoService(Processor.class)
+//@AutoService(Processor.class)
 @SupportedAnnotationTypes("com.cat.valid.MustBeEnum")
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class MustBeEnumProcessor extends AbstractProcessor {
