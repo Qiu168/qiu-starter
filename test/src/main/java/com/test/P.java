@@ -2,14 +2,14 @@ package com.test;
 
 import com.cat.json.JSONIgnore;
 import com.cat.json.sensitive.Sensitive;
-
+import com.cat.json.sensitive.SensitiveConstants;
 
 
 public class P {
     String name;
     @JSONIgnore
     String password;
-    @Sensitive(strategy = "EMAIL")
+    @Sensitive(strategy = SensitiveConstants.EMAIL)
     String email;
 
     //<editor-fold defaultstate="collapsed" desc="delombok">
