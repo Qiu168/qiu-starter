@@ -1,6 +1,7 @@
 package com.test;
 
 import com.alibaba.fastjson2.JSON;
+import com.cat.encrypt.EncryptorConfig;
 import com.cat.log.EnableLog;
 import com.cat.redis.JsonRedisTemplate;
 import com.cat.MyService;
@@ -24,10 +25,12 @@ public class Application {
     JsonRedisTemplate<Object,Object> jsonRedisTemplate;
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-        test bean1 = context.getBean(test.class);
-        P p=new P("123","456","789");
-        System.out.println(JSON.toJSONString(p));
-        String s = bean1.test1(p);
-        MustBeEnumTest mustBeEnumTest=new MustBeEnumTest();
+        EncryptorConfig bean = context.getBean(EncryptorConfig.class);
+        System.out.println("EncryptorConfig:"+(bean==null));
+//        test bean1 = context.getBean(test.class);
+//        P p=new P("123","456","789");
+//        System.out.println(JSON.toJSONString(p));
+//        String s = bean1.test1(p);
+//        MustBeEnumTest mustBeEnumTest=new MustBeEnumTest();
     }
 }

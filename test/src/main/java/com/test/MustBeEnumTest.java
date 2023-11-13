@@ -7,14 +7,9 @@ import java.util.function.Function;
 /**
  * @author 14629
  */
-public class MustBeEnumTest implements Desensitize,it{
+public class MustBeEnumTest implements Desensitize{
     @Override
     public Function<String, String> desensitizer() {
         return null;
-    }
-
-    @Override
-    public void hello() {
-
     }
 }

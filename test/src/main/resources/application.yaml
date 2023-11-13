@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 cat:
   prefix: catCATcatCAT
   suffix: qiuQIUqiuQIU
@@ -10,6 +9,11 @@ spring:
     host: 39.108.105.73
     port: 37690
     password: aliyunbaotaredissz
+  profiles:
+    active: dev
 #  main:
 #    #当遇到同样名字的时候，是否允许覆盖注册
 #    allow-bean-definition-overriding: true
+mybatis-encryptor:
+  enable: true
+  salt: 456sadas121d3a564das

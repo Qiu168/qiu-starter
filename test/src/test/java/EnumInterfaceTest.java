@@ -4,7 +4,8 @@ import com.cat.json.sensitive.Desensitize;
 import com.cat.json.sensitive.SensitiveStrategy;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.test.P;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 import java.lang.reflect.Field;
 
