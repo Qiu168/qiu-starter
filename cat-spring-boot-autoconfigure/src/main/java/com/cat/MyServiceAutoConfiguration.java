@@ -1,5 +1,6 @@
 package com.cat;
 
+import com.cat.encrypt.EncryptorProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -15,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 // 可选，表示在web应用中才配置
 //@ConditionalOnWebApplication
 // 必须，绑定我们的配置文件类
-@EnableConfigurationProperties(MyProperties.class)
+@EnableConfigurationProperties({MyProperties.class, EncryptorProperties.class})
 // 可选，表示可以在配置文件中，通过myservice.enable来设置是否配置该类
 // 如果没有指明，则默认为true，即表示配置，如果指明为false，就不配置了
 @ConditionalOnProperty(prefix = "cat", value = "enable", matchIfMissing = true)
