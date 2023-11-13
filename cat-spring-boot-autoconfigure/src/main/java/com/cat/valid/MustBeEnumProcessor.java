@@ -28,7 +28,7 @@ public class MustBeEnumProcessor extends AbstractProcessor {
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
-        this.elementUtils = processingEnv.getElementUtils();
+        interfaceList.add(processingEnv.getElementUtils().getTypeElement("com.cat.json.sensitive.Desensitize"));
     }
 
     @Override
