@@ -5,10 +5,6 @@ cat:
   suffix: qiuQIUqiuQIU
 
 spring:
-  redis:
-    host: 39.108.105.73
-    port: 37690
-    password: aliyunbaotaredissz
   profiles:
     active: dev
 #  main:

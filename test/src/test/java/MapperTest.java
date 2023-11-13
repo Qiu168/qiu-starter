@@ -2,6 +2,7 @@ import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.digest.Digester;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.conditions.query.LambdaQueryChainWrapper;
+import com.cat.encrypt.EncryptHelper;
 import com.cat.encrypt.encryptor.Md5Encryptor;
 import com.test.Application;
 import com.test.Food;
@@ -22,7 +23,9 @@ public class MapperTest {
         ArrayList<Food> foods = new ArrayList<>();
         foods.add(new Food(null,"456"));
         foods.add(new Food(null,"789"));
-        foodMapper.insertBatch(foods);
+        //EncryptHelper.cancelEncrypt();
+        EncryptHelper.runCancelEncryptMethod(()-> foodMapper.insertBatch(foods));
+        foodMapper.insert(new Food(null,"123"));
         System.out.println(foods);
     }
     @Test
