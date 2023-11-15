@@ -5,13 +5,16 @@ package com.cat.encrypt;
  * <p>
  *     仿写 {@link com.github.pagehelper.PageHelper}
  * </p>
- * 但是没有实现执行一个sql就自动{@link EncryptHelper#clearEncrypt()} 所以需要手动clearEncrypt<p>
- * 或使用runCancelEncryptMethod
+ * 可以使用runCancelEncryptMethod
+ * 或手动clear
  * <p>
  *     todo:returnUndecrypted和returnUnencrypted还没实现
  * </p>
+ * 实现了执行一个sql就自动{@link EncryptHelper#clearEncrypt()}
+ * 需配置
+ * @see EncryptorConfig#mybatisClearInterceptor(EncryptorManager) 自动清除拦截器<p>
  *
- * @author 14629
+ * @author _qiu
  */
 public class EncryptHelper implements AutoCloseable {
     private static final ThreadLocal<EncryptSituation> LOCAL_ENCRYPT=new ThreadLocal<>();
@@ -38,6 +41,9 @@ public class EncryptHelper implements AutoCloseable {
     }
     public static void clearDecrypt(){
         LOCAL_ENCRYPT.remove();
+    }
+    public static boolean hasSituation(){
+        return LOCAL_ENCRYPT.get()!=null;
     }
     public static void runCancelEncryptMethod(Runnable method){
         cancelEncrypt();

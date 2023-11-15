@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 
 /**
- * @author 14629
+ * @author _qiu
  */
 @Configuration
 @ConditionalOnProperty(value = "mybatis-encryptor.enable", havingValue = "true")
@@ -29,5 +29,10 @@ public class EncryptorConfig {
     @Bean
     public MybatisDecryptInterceptor mybatisDecryptInterceptor(EncryptorManager encryptorManager) {
         return new MybatisDecryptInterceptor(encryptorManager, properties);
+    }
+    @ConditionalOnProperty(value = "mybatis-encryptor.auto-clear",havingValue = "true")
+    @Bean
+    public MybatisClearInterceptor mybatisClearInterceptor(EncryptorManager encryptorManager) {
+        return new MybatisClearInterceptor();
     }
 }
