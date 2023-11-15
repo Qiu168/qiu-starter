@@ -13,3 +13,4 @@ spring:
 mybatis-encryptor:
   enable: true
   salt: 456sadas121d3a564das
+  auto-clear: true

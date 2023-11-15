@@ -11,8 +11,8 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * todo:可以优化为@EnableJsonRedis，或者直接叫JsonRedisTemplate得了
- * @author 14629
+ * 可以优化为@EnableJsonRedis，或者直接叫JsonRedisTemplate得了
+ * @author _qiu
  */
 @EnableCaching
 @Configuration
