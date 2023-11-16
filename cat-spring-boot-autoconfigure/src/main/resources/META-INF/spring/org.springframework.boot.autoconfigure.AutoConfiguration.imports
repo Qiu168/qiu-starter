@@ -5,3 +5,4 @@ com.cat.utils.SpringUtil
 com.cat.json.sensitive.DefaultSensitiveService
 #com.cat.encrypt.EncryptorProperties
 com.cat.encrypt.EncryptorConfig
+com.cat.idempotent.config.IdempotentConfiguration
