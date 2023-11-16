@@ -1,4 +1,4 @@
-package com.cat.redis;
+package com.cat.cache.redis;
 
 import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.StrUtil;

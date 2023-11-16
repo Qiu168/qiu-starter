@@ -1,13 +1,13 @@
-package com.cat.redis;
+package com.cat.cache.redis;
 
 import cn.hutool.core.util.StrUtil;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -58,6 +58,7 @@ public class RedisTemplateConfiguration /*extends CachingConfigurerSupport*/ {
 
     @Bean
     @Primary
+    @ConditionalOnProperty(value = "cache.timeout.redis.enable",havingValue = "true")
     public RedisCacheConfiguration redisCacheConfiguration(CacheProperties cacheProperties) {
         RedisCacheConfiguration config = RedisCacheConfiguration.defaultCacheConfig();
         // 设置使用 : 单冒号，而不是双 :: 冒号，避免 Redis Desktop Manager 多余空格
@@ -84,6 +85,7 @@ public class RedisTemplateConfiguration /*extends CachingConfigurerSupport*/ {
         return config;
     }
     @Bean
+    @ConditionalOnProperty(value = "cache.timeout.redis.enable",havingValue = "true")
     public CacheManager timeoutRedisCacheManager(RedisTemplate redisTemplate, RedisCacheConfiguration redisCacheConfiguration) {
         //log.info("=================>>>{}",redisTemplate instanceof JsonRedisTemplate);
         // 创建 RedisCacheWriter 对象
