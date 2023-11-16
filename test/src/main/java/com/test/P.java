@@ -20,6 +20,9 @@ public class P {
         this.email = email;
     }
 
+    public P() {
+    }
+
     @SuppressWarnings("all")
     public String getName() {
         return this.name;

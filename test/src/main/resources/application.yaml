@@ -3,10 +3,12 @@ server:
 cat:
   prefix: catCATcatCAT
   suffix: qiuQIUqiuQIU
-
 spring:
   profiles:
     active: dev
+  cache:
+    redis:
+      time-to-live: 1000000
 #  main:
 #    #当遇到同样名字的时候，是否允许覆盖注册
 #    allow-bean-definition-overriding: true

@@ -1,3 +1,5 @@
+import com.alibaba.fastjson2.JSON;
+import com.test.P;
 import org.junit.jupiter.api.Test;
 
 public class ConvertTest {
@@ -186,5 +188,14 @@ public class ConvertTest {
         pp pp = new pp();
         //Convert.convert(p,pp);
         System.out.println(pp);
+    }
+    @Test
+    void testJson(){
+        Object parse = JSON.parseObject("{\n" +
+                "  \"email\": \"email@email.email\",\n" +
+                "  \"name\": \"name\"\n" +
+                "}",P.class);
+        P parse1 = (P) parse;
+        System.out.println(parse1);
     }
 }
