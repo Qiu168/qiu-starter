@@ -1,8 +1,9 @@
-com.cat.redis.RedisTemplateConfiguration
-com.cat.redis.RedisService
+com.cat.cache.redis.RedisTemplateConfiguration
+com.cat.cache.redis.RedisService
 #com.cat.log.LogAspect
 com.cat.utils.SpringUtil
 com.cat.json.sensitive.DefaultSensitiveService
 #com.cat.encrypt.EncryptorProperties
 com.cat.encrypt.EncryptorConfig
 com.cat.idempotent.config.IdempotentConfiguration
+com.cat.cache.caffeine.CaffeineConfiguration
