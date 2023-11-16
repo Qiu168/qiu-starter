@@ -1,7 +1,7 @@
 package com.test;
 
 import com.cat.log.Log;
-import com.cat.redis.RedisService;
+import com.cat.cache.redis.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
