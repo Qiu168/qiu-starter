@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class RedisCache {
     @SneakyThrows
-    @Cacheable(cacheNames = {"123#-1"},key = "#id",cacheManager = "timeoutCaffeineCacheManager")
+    @Cacheable(cacheNames = {"123#20"},key = "#id",cacheManager = "timeoutRedisCacheManager")
     //@Idempotent
     public P RedisCache(String id) throws RepeatException {
         Thread.sleep(1000);
         System.out.println("begin");
-        return new P("name","password","email@email.email");
+        return new P(id,"password","email@email.email");
     }
 }
