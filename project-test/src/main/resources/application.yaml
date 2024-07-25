@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  cache:
+    caffeine:
+      spec:
+    type: simple
+
+cache:
+  timeout:
+    #    redis:
+    #      enable: true
+    caffeine:
+      #name: qiu
+      enable: true
+
+

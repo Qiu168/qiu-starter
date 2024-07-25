@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="test" />
+        <module name="project-test" />
         <module name="cat-spring-boot-starter" />
       </profile>
       <profile name="Annotation profile for cat-spring-boot-autoconfigure" enabled="true">
@@ -43,6 +44,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="cat-spring-boot-autoconfigure" options="-parameters" />
+      <module name="project-test" options="-parameters" />
       <module name="test" options="-parameters" />
     </option>
   </component>

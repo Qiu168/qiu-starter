@@ -6,7 +6,7 @@ import com.cat.encrypt.AlgorithmType;
 import com.cat.encrypt.Encrypt;
 
 /**
- * @author 14629
+ * @author _qiu
  */
 public class Food {
     @TableId(type = IdType.AUTO)

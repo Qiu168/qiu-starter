@@ -5,7 +5,7 @@ import com.cat.json.sensitive.Desensitize;
 import java.util.function.Function;
 
 /**
- * @author 14629
+ * @author _qiu
  */
 public class MustBeEnumTest {
 

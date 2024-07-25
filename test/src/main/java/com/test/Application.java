@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author 14629
+ * @author _qiu
  */
 @SpringBootApplication
 @EnableAspectJAutoProxy
@@ -28,17 +28,19 @@ public class Application {
 
     public static void main(String[] args) throws InterruptedException {
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-        //RedisCache bean = context.getBean(RedisCache.class);
+        RedisCache bean = context.getBean(RedisCache.class);
+//        Object qiu = context.getBean("qiu");
+        Object timeoutCaffeineCacheManager = context.getBean("timeoutCaffeineCacheManager");
         //IdempotentRedisDAO bean1 = context.getBean(IdempotentRedisDAO.class);
-        JsonRedisTemplate<Object,Object> bean = context.getBean(JsonRedisTemplate.class);
-//        try {
-//            bean.RedisCache("456");
-//            bean.RedisCache("456");
-//            bean.RedisCache("456");
-//            bean.RedisCache("123");
-//        } catch (RepeatException e) {
-//            System.out.println("exception");
-//        }
+//        JsonRedisTemplate<Object,Object> bean = context.getBean(JsonRedisTemplate.class);
+        try {
+            bean.RedisCache("456");
+            bean.RedisCache("456");
+            bean.RedisCache("456");
+            bean.RedisCache("123");
+        } catch (RepeatException e) {
+            System.out.println("exception");
+        }
 //        Thread.sleep(3000);
 //        bean.RedisCache("123");
 //        TimeoutCaffeineCacheManager bean2 = context.getBean(TimeoutCaffeineCacheManager.class);
@@ -48,15 +50,15 @@ public class Application {
 //        System.out.println(JSON.toJSONString(p));
 //        String s = bean1.test1(p);
 //        MustBeEnumTest mustBeEnumTest=new MustBeEnumTest();
-        bean.opsForValue().set("777777777777777",new P("123","456","789"),20, TimeUnit.SECONDS);
+//        bean.opsForValue().set("777777777777777",new P("123","456","789"),20, TimeUnit.SECONDS);
 //        Map o = (Map) bean.opsForValue().get("777777777777777");
 //        P p = BeanUtil.mapToBean(o, P.class, false,null);
 //        System.out.println(p);
-        P p = bean.getJsonObj("777777777777777", P.class);
-        System.out.println(p);
-        Object o = bean.opsForValue().get("777777777777777");
-        System.out.println(o instanceof Map);
-        System.out.println(o instanceof String);
-        System.out.println(o);
+//        P p = bean.getJsonObj("777777777777777", P.class);
+//        System.out.println(p);
+//        Object o = bean.opsForValue().get("777777777777777");
+//        System.out.println(o instanceof Map);
+//        System.out.println(o instanceof String);
+//        System.out.println(o);
     }
 }

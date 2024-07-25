@@ -13,7 +13,6 @@ spring:
       time-to-live: 1000000
       cache-null-values: true
       key-prefix: 66
-
 #  main:
 #    #当遇到同样名字的时候，是否允许覆盖注册
 #    allow-bean-definition-overriding: true
@@ -24,7 +23,11 @@ mybatis-encryptor:
 
 cache:
   timeout:
-    redis:
-      enable: true
+#    redis:
+#      enable: true
     caffeine:
+      #name: qiu
       enable: true
+logging:
+  pattern:
+    console:

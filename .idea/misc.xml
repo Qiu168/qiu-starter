@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/cat-spring-boot-starter/pom.xml" />
         <option value="$PROJECT_DIR$/cat-spring-boot-autoconfigure/pom.xml" />
         <option value="$PROJECT_DIR$/test/pom.xml" />
+        <option value="$PROJECT_DIR$/project-test/pom.xml" />
       </list>
     </option>
   </component>

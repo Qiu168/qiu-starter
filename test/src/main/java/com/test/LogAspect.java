@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 /**
- * @author 14629
+ * @author _qiu
  */
 @Component
 @Aspect
