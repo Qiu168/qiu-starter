@@ -1,6 +1,9 @@
 package com.cat.cache.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.BoundSetOperations;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.ValueOperations;
@@ -17,6 +20,8 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 @SuppressWarnings("ALL")
+@AutoConfigureAfter(JsonRedisTemplate.class)
+@ConditionalOnSingleCandidate(RedisConnectionFactory.class)
 public class RedisService {
     @Autowired
     public JsonRedisTemplate jsonRedisTemplate;

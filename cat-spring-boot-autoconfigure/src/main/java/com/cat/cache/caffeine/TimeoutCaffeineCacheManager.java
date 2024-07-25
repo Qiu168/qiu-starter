@@ -17,10 +17,15 @@ import java.time.Duration;
 public class TimeoutCaffeineCacheManager extends CaffeineCacheManager {
     private static final String SPLIT = "#";
     CacheProperties cacheProperties;
+    String spec;
 
     public TimeoutCaffeineCacheManager(CacheProperties cacheProperties) {
         super();
         this.cacheProperties = cacheProperties;
+        this.spec=cacheProperties.getCaffeine().getSpec();
+        if(this.spec==null){
+            this.spec="";
+        }
     }
 
     @Override
@@ -35,7 +40,6 @@ public class TimeoutCaffeineCacheManager extends CaffeineCacheManager {
         }
         names[1] = StrUtil.subBefore(names[1], StrUtil.COLON, false);
         // 解析时间
-        String spec = cacheProperties.getCaffeine().getSpec();
         CaffeineSpec parse = CaffeineSpec.parse(spec);
         Duration duration = parseDuration(names[1]);
         return adaptCaffeineCache(name, Caffeine.from(parse).expireAfterWrite(duration).build());
