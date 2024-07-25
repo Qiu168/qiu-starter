@@ -3,7 +3,7 @@ package com.cat;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * @author 14629
+ * @author _qiu
  */
 @Deprecated
 @ConfigurationProperties(prefix = "cat")

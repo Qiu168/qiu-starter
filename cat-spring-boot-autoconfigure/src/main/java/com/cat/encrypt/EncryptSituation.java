@@ -1,7 +1,7 @@
 package com.cat.encrypt;
 
 /**
- * @author 14629
+ * @author _qiu
  */
 public class EncryptSituation {
     private boolean returnEncrypted = true;

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author 14629
+ * @author _qiu
  */
 @Deprecated
 // 必须，指明这是一个配置类

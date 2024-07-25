@@ -14,27 +14,32 @@ public enum AlgorithmType {
      */
     DEFAULT(null),
     /**
+     * 编码
      * base64
      */
     BASE64(Base64Encryptor.class),
     /**
+     * 对称
      * aes
      */
     AES(AesEncryptor.class),
     /**
+     * 非对称
      * rsa
      */
     RSA(RsaEncryptor.class),
     /**
+     * 非对称
      * sm2
      */
     SM2(Sm2Encryptor.class),
     /**
+     * 对称
      * sm4
      */
     SM4(Sm4Encryptor.class),
     /**
-     *
+     * 哈希
      * MD5
      */
     MD5(Md5Encryptor.class);

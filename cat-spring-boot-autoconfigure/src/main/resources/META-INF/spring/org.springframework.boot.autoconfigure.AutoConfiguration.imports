@@ -5,5 +5,8 @@ com.cat.utils.SpringUtil
 com.cat.json.sensitive.DefaultSensitiveService
 #com.cat.encrypt.EncryptorProperties
 com.cat.encrypt.EncryptorConfig
-com.cat.idempotent.config.IdempotentConfiguration
+com.cat.idempotent.config.IdempotentConfigurationRedis
 com.cat.cache.caffeine.CaffeineConfiguration
+#com.cat.cache.caffeine.DynamicBeanFactoryPostProcessor
+com.cat.log.HttpAccessAspect
+com.cat.idempotent.config.IdempotentConfigurationResilience4j

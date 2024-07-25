@@ -9,7 +9,7 @@ import com.cat.encrypt.EncryptContext;
 
 
 /**
- * @author 14629
+ * @author _qiu
  */
 public class Md5Encryptor extends AbstractEncryptor {
     private final MD5 md5;

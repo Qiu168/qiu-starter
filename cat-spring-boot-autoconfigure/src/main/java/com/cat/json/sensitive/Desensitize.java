@@ -6,7 +6,7 @@ import java.util.function.Function;
 
 /**
  * 脱敏枚举类需实现此接口
- * @author 14629
+ * @author _qiu
  */
 @MustBeEnum
 public interface Desensitize {

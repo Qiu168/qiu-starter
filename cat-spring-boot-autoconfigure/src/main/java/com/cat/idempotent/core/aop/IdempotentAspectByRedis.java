@@ -1,13 +1,10 @@
 package com.cat.idempotent.core.aop;
 
 
-import cn.hutool.core.collection.CollUtil;
-import com.cat.encrypt.MybatisClearInterceptor;
 import com.cat.idempotent.core.annotation.Idempotent;
 import com.cat.idempotent.core.exception.RepeatException;
 import com.cat.idempotent.core.keyresolver.IdempotentKeyResolver;
 import com.cat.idempotent.core.redis.IdempotentRedisDAO;
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -23,9 +20,9 @@ import java.util.stream.Collectors;
  * @author 芋道源码
  */
 @Aspect
-public class IdempotentAspect {
+public class IdempotentAspectByRedis {
     @SuppressWarnings("ALL")
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(IdempotentAspect.class);
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(IdempotentAspectByRedis.class);
 
     /**
      * IdempotentKeyResolver 集合
@@ -34,7 +31,7 @@ public class IdempotentAspect {
 
     private final IdempotentRedisDAO idempotentRedisDAO;
 
-    public IdempotentAspect(List<IdempotentKeyResolver> keyResolvers, IdempotentRedisDAO idempotentRedisDAO) {
+    public IdempotentAspectByRedis(List<IdempotentKeyResolver> keyResolvers, IdempotentRedisDAO idempotentRedisDAO) {
         this.keyResolvers = keyResolvers.stream().collect(Collectors.toMap(IdempotentKeyResolver::getClass, o->o));/*CollUtil.convertMap(keyResolvers, IdempotentKeyResolver::getClass);*/
         this.idempotentRedisDAO = idempotentRedisDAO;
     }

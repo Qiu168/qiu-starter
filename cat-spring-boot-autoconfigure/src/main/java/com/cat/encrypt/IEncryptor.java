@@ -4,7 +4,7 @@ package com.cat.encrypt;
 /**
  * 加解者
  *
- * @author 14629
+ * @author _qiu
  */
 public interface IEncryptor {
 

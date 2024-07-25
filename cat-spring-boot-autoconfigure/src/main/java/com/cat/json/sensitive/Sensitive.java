@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 /**
  * 只会影响springmvc的也就是jackson的序列化
  * 字段去敏
- * @author 14629
+ * @author _qiu
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)

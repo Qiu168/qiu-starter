@@ -2,7 +2,7 @@ package com.cat.json.sensitive;
 
 /**
  * see{@link SensitiveStrategy}
- * @author 14629
+ * @author _qiu
  */
 public interface SensitiveConstants {
     String EMAIL="EMAIL";
